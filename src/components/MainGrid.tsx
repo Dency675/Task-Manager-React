@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -60,19 +60,19 @@ export default function MainGrid() {
   };
 
   const handleDeleteTasksClick = () => {
-    setOpenDeleteDialog(true); // Open confirmation dialog
+    setOpenDeleteDialog(true);
   };
 
   const handleConfirmDelete = () => {
     setRows((prevRows) =>
       prevRows.filter((row) => !selectedRows.includes(row.id)),
     );
-    setSelectedRows([]); // Clear selection
-    setOpenDeleteDialog(false); // Close confirmation dialog
+    setSelectedRows([]);
+    setOpenDeleteDialog(false);
   };
 
   const handleCancelDelete = () => {
-    setOpenDeleteDialog(false); // Close confirmation dialog
+    setOpenDeleteDialog(false);
   };
 
   const handleDialogClose = () => {
@@ -84,7 +84,6 @@ export default function MainGrid() {
       const cellValue = row[chip.column]?.toString().toLowerCase() || '';
 
       if (chip.column === 'any') {
-        // Check if the search value exists in any column
         return Object.values(row).some((value) =>
           value.toString().toLowerCase().includes(chip.value.toLowerCase()),
         );
@@ -183,7 +182,6 @@ export default function MainGrid() {
         </Stack>
 
         <Stack direction="row" spacing={1}>
-          {/* <Search setSearchTerm={setFilterText} searchTerm={filterText} /> */}
           <Search setChips={setChips} chips={chips} />
           <Button variant="contained" onClick={handleAddTaskClick}>
             Add Task
@@ -214,7 +212,6 @@ export default function MainGrid() {
             onRowsSelected={setSelectedRows}
             openFilterPanel={false}
             setRows={setRows}
-            // rows={rows}
             rows={filteredRows}
           />
         </Grid>
@@ -231,7 +228,6 @@ export default function MainGrid() {
         setRows={setRows}
       />
 
-      {/* Delete Confirmation Dialog */}
       <Dialog open={openDeleteDialog} onClose={handleCancelDelete}>
         <DialogTitle>Delete Confirmation</DialogTitle>
         <DialogContent>

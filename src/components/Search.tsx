@@ -8,8 +8,6 @@ import {
   Select,
   FormControl,
   InputLabel,
-  Chip,
-  Stack,
   SelectChangeEvent,
   InputAdornment,
   Badge,
@@ -17,7 +15,7 @@ import {
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 const columnOptions = [
-  { value: 'pageTitle', label: 'Title' },
+  { value: 'taskTitle', label: 'Title' },
   { value: 'description', label: 'Description' },
   { value: 'priority', label: 'Priority' },
   { value: 'markComplete', label: 'Mark as Complete' },
@@ -79,7 +77,6 @@ export default function Search({
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && inputValue.trim()) {
       if (selectedColumn && selectedFilter) {
-        // With selected column and filter, create chip with those details
         const newChip = {
           column: selectedColumn,
           filter: selectedFilter,
@@ -87,7 +84,6 @@ export default function Search({
         };
         setChips((prevChips) => [...prevChips, newChip]);
       } else {
-        // Without column or filter, create chip with just the text
         const newChip = {
           column: 'any',
           filter: 'contains',
@@ -96,7 +92,7 @@ export default function Search({
         setChips((prevChips) => [...prevChips, newChip]);
       }
 
-      setInputValue(''); // Clear the input field after adding the chip
+      setInputValue('');
     }
   };
 

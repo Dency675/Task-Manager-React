@@ -80,8 +80,7 @@ export default function ChartUserByCountry({
 }: {
   taskData: { label: string; value: number; color: string }[];
 }) {
-  const totalTasks = taskData.reduce((acc, curr) => acc + curr.value, 0); // Calculate total tasks
-
+  const totalTasks = taskData.reduce((acc, curr) => acc + curr.value, 0);
   return (
     <Card
       variant="outlined"
@@ -93,7 +92,7 @@ export default function ChartUserByCountry({
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <PieChart
-            colors={taskData.map((item) => item.color)} // Use colors from task data
+            colors={taskData.map((item) => item.color)}
             margin={{
               left: 80,
               right: 80,

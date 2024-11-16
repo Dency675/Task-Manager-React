@@ -34,9 +34,9 @@ export default function AddTaskDialog({
       ...prevRows,
       {
         id: prevRows.length + 1,
-        pageTitle: taskTitle,
+        taskTitle: taskTitle,
         status: priority,
-        users: description,
+        description: description,
         markComplete: markComplete,
       },
     ]);

@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  DataGrid,
-  GridToolbarContainer,
-  GridToolbarExport,
-  GridToolbarFilterButton,
-  GridValidRowModel,
-} from '@mui/x-data-grid';
+import { DataGrid, GridValidRowModel } from '@mui/x-data-grid';
 import { columns } from './gridData';
 import { useState } from 'react';
 import {
@@ -36,58 +30,68 @@ export default function CustomizedDataGrid({
   setRows: React.Dispatch<React.SetStateAction<readonly GridValidRowModel[]>>;
   rows: readonly GridValidRowModel[];
 }) {
-  // const [rows, setRows] = useState(initialRows); // State to manage rows
-  const [open, setOpen] = useState(false); // State to control the dialog visibility
-  const [selectedRow, setSelectedRow] = useState<any>(null); // Store the selected row's data
-  const [markComplete, setMarkComplete] = useState(false); // Track the "Mark as Complete" switch state
-  const [priority, setPriority] = useState('Low'); // Track the selected priority
+  const [open, setOpen] = useState(false);
+  const [selectedRow, setSelectedRow] = useState<any>(null);
+  const [markComplete, setMarkComplete] = useState(false);
+  const [priority, setPriority] = useState('Low');
+  const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
 
   const filteredRows = rows.filter(
     (row) =>
-      row.pageTitle.toLowerCase().includes(filterText.toLowerCase()) ||
-      row.status.toLowerCase().includes(filterText.toLowerCase()), // Example filter by title and status
+      row.taskTitle.toLowerCase().includes(filterText.toLowerCase()) ||
+      row.status.toLowerCase().includes(filterText.toLowerCase()),
   );
 
-  const handleDeleteRow = (id: number) => {
-    setRows((prevRows) => prevRows.filter((row) => row.id !== id)); // Remove row with the specified ID
+  const handleDeleteConfirmationOpen = (row: any) => {
+    setSelectedRow(row);
+    setOpenDeleteConfirmation(true);
+  };
+
+  const handleDeleteConfirmationClose = () => {
+    setOpenDeleteConfirmation(false);
+  };
+
+  const handleDeleteConfirmed = () => {
+    if (selectedRow) {
+      if (!selectedRow.id)
+        setRows((prevRows) => prevRows.filter((row) => row.id !== selectedRow));
+
+      setRows((prevRows) =>
+        prevRows.filter((row) => row.id !== selectedRow.id),
+      );
+    }
+    setOpenDeleteConfirmation(false);
+    setOpen(false);
   };
 
   const handleEditClick = (row: any) => {
-    setSelectedRow(row); // Store the selected row's data
-    setMarkComplete(row.markComplete); // Set the initial state of "Mark as Complete" switch
-    setPriority(row.status); // Set the initial priority value
-    setOpen(true); // Open the modal
+    setSelectedRow(row);
+    setMarkComplete(row.markComplete);
+    setPriority(row.status);
+    setOpen(true);
   };
 
   const handleCloseDialog = () => {
-    setOpen(false); // Close the modal
+    setOpen(false);
   };
 
   const handleSave = () => {
     if (selectedRow) {
       const updatedRow = {
         ...selectedRow,
-        markComplete: markComplete, // Update markComplete status
-        status: priority, // Update the priority status
+        markComplete: markComplete,
+        status: priority,
       };
-      console.log(updatedRow, 'updatedRow');
-      // Update the rows with the modified data
       setRows((prevRows) =>
         prevRows.map((row) => (row.id === selectedRow.id ? updatedRow : row)),
       );
     }
-    setOpen(false); // Close the modal after saving
+    setOpen(false);
   };
 
   const handleMarkCompleteChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    console.log(
-      event.target.checked,
-      event.target,
-
-      'sssssssssssssss',
-    );
     setMarkComplete(event.target.checked);
   };
 
@@ -109,7 +113,11 @@ export default function CustomizedDataGrid({
         checkboxSelection
         onRowSelectionModelChange={(ids) => onRowsSelected(ids as number[])}
         rows={filteredRows}
-        columns={columns(handleEditClick, handleDeleteRow, handleUpdateRow)} // Pass handleDeleteRow and handleEditClick to columns
+        columns={columns(
+          handleEditClick,
+          handleDeleteConfirmationOpen,
+          handleUpdateRow,
+        )}
         getRowClassName={(params) =>
           params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd'
         }
@@ -122,15 +130,23 @@ export default function CustomizedDataGrid({
         disableRowSelectionOnClick
       />
 
-      {/* Edit Dialog */}
       <Dialog open={open} onClose={handleCloseDialog}>
         <DialogTitle>Edit Task</DialogTitle>
         <DialogContent>
           <TextField
             label="Title"
-            value={selectedRow?.pageTitle || ''}
+            value={selectedRow?.taskTitle || ''}
             onChange={(e) =>
-              setSelectedRow({ ...selectedRow, pageTitle: e.target.value })
+              setSelectedRow({ ...selectedRow, taskTitle: e.target.value })
+            }
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Description"
+            value={selectedRow?.description || ''}
+            onChange={(e) =>
+              setSelectedRow({ ...selectedRow, description: e.target.value })
             }
             fullWidth
             margin="normal"
@@ -177,13 +193,28 @@ export default function CustomizedDataGrid({
             Save
           </Button>
           <Button
-            onClick={() => {
-              handleDeleteRow(selectedRow?.id);
-              handleCloseDialog();
-            }}
+            onClick={() => handleDeleteConfirmationOpen(selectedRow)}
             color="error"
           >
             Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={openDeleteConfirmation}
+        onClose={handleDeleteConfirmationClose}
+      >
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogContent>
+          Are you sure you want to delete this task?
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteConfirmationClose} color="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handleDeleteConfirmed} color="error">
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

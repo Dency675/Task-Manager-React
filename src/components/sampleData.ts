@@ -3,42 +3,74 @@ import { GridRowsProp } from '@mui/x-data-grid';
 export const rows: GridRowsProp = [
   {
     id: 1,
-    pageTitle: 'Homepage Overview',
-    status: 'Low', // Low priority
-    eventCount: 8345,
-    users: 212423,
-    viewsPerUser: 18.5,
-    averageTime: '2m 15s',
+    taskTitle: 'Homepage Overview',
+    description:
+      'Review and update the homepage layout and design to improve user engagement.',
+    status: 'Low',
+    dueDate: '2024-12-01',
     markComplete: false,
   },
   {
     id: 2,
-    pageTitle: 'Product Details - Gadgets',
-    status: 'Critical', // Critical priority
-    eventCount: 5653,
-    users: 172240,
-    viewsPerUser: 9.7,
-    averageTime: '2m 30s',
+    taskTitle: 'Product Details - Gadgets',
+    description:
+      'Complete the product page for new gadgets, including descriptions, pricing, and images.',
+    status: 'Critical',
+    dueDate: '2024-11-20',
     markComplete: true,
   },
   {
     id: 3,
-    pageTitle: 'Checkout Process - Step 1',
-    status: 'Medium', // Medium priority
-    eventCount: 3455,
-    users: 58240,
-    viewsPerUser: 15.2,
-    averageTime: '2m 10s',
+    taskTitle: 'Checkout Process - Step 1',
+    description:
+      'Improve the checkout flow by adding a guest checkout option and optimizing the form.',
+    status: 'Medium',
+    dueDate: '2024-11-25',
     markComplete: false,
   },
   {
     id: 4,
-    pageTitle: 'Search Results - Top 10',
-    status: 'High', // High priority
-    eventCount: 4512,
-    users: 302110,
-    viewsPerUser: 14.3,
-    averageTime: '1m 45s',
+    taskTitle: 'Search Results - Top 10',
+    description:
+      'Optimize the search result algorithm to ensure that the top 10 results are accurate and relevant.',
+    status: 'High',
+    dueDate: '2024-11-22',
     markComplete: false,
+  },
+  {
+    id: 5,
+    taskTitle: 'Mobile App Testing',
+    description:
+      'Test the new features in the mobile app and identify any bugs or usability issues.',
+    status: 'Low',
+    dueDate: '2024-12-05',
+    markComplete: false,
+  },
+  {
+    id: 6,
+    taskTitle: 'SEO Optimization for Blog',
+    description:
+      'Perform SEO optimization for the latest blog post to improve search engine ranking.',
+    status: 'Medium',
+    dueDate: '2024-11-28',
+    markComplete: true,
+  },
+  {
+    id: 7,
+    taskTitle: 'Customer Feedback Analysis',
+    description:
+      'Analyze customer feedback and identify key issues to address in the upcoming update.',
+    status: 'High',
+    dueDate: '2024-11-18',
+    markComplete: false,
+  },
+  {
+    id: 8,
+    taskTitle: 'Database Optimization',
+    description:
+      'Optimize the database queries to improve performance and reduce load times.',
+    status: 'Critical',
+    dueDate: '2024-11-15',
+    markComplete: true,
   },
 ];

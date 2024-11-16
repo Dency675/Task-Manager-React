@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import Switch from '@mui/material/Switch';
 import { GridCellParams, GridColDef } from '@mui/x-data-grid';
-import { useState } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -22,7 +21,6 @@ function renderStatus(status: 'Low' | 'Medium' | 'High' | 'Critical') {
   return <Chip label={status} color={colors[status]} size="small" />;
 }
 
-// Render Avatar function
 export function renderAvatar(
   params: GridCellParams<{ name: string; color: string }, any, any>,
 ) {
@@ -50,7 +48,7 @@ function renderSwitchCell(
 ) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newChecked = event.target.checked;
-    updateRow(params.id as number, newChecked); // Update the rows state
+    updateRow(params.id as number, newChecked);
   };
 
   return (
@@ -64,18 +62,17 @@ function renderSwitchCell(
   );
 }
 
-// New function to render action icons (edit and delete)
 function renderActionCell(
   params: GridCellParams,
   handleEditClick: (row: any) => void,
   handleDeleteRow: (id: number) => void,
 ) {
   const handleEdit = () => {
-    handleEditClick(params.row); // Pass the row to the edit handler
+    handleEditClick(params.row);
   };
 
   const handleDelete = () => {
-    handleDeleteRow(params.id as number); // Call the delete handler
+    handleDeleteRow(params.id as number);
   };
 
   return (
@@ -95,9 +92,9 @@ export const columns = (
   handleDeleteRow: (id: number) => void,
   updateRow: (id: number, newValue: boolean) => void,
 ): GridColDef[] => [
-  { field: 'pageTitle', headerName: 'Title', flex: 1.5, minWidth: 200 },
+  { field: 'taskTitle', headerName: 'Title', flex: 1.5, minWidth: 200 },
   {
-    field: 'users',
+    field: 'description',
     headerName: 'Description',
     headerAlign: 'left',
     align: 'left',
@@ -109,14 +106,14 @@ export const columns = (
     headerName: 'Priority',
     flex: 0.5,
     minWidth: 80,
-    renderCell: (params) => renderStatus(params.value as any), // Render priority with color
+    renderCell: (params) => renderStatus(params.value as any),
   },
   {
     field: 'markComplete',
     headerName: 'Mark as Complete',
     flex: 1,
     minWidth: 150,
-    renderCell: (params) => renderSwitchCell(params, updateRow), // Pass the updateRow function
+    renderCell: (params) => renderSwitchCell(params, updateRow),
   },
   {
     field: 'actions',
@@ -124,6 +121,6 @@ export const columns = (
     flex: 1,
     minWidth: 150,
     renderCell: (params) =>
-      renderActionCell(params, handleEditClick, handleDeleteRow), // Pass the delete handler here
+      renderActionCell(params, handleEditClick, handleDeleteRow),
   },
 ];
