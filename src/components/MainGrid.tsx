@@ -23,7 +23,20 @@ export default function MainGrid() {
   const [rows, setRows] = useState(initialRows);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [chips, setChips] = useState<
-    { column: string; filter: string; value: string }[]
+    {
+      column: string;
+      filter: string;
+      value: string;
+      color:
+        | 'default'
+        | 'primary'
+        | 'secondary'
+        | 'error'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | undefined;
+    }[]
   >([]);
 
   const totalTasks = rows.length;
@@ -196,6 +209,8 @@ export default function MainGrid() {
             key={index}
             label={`${chip.column} ${chip.filter} "${chip.value}"`}
             onDelete={() => handleDeleteChip(chip)}
+            variant="outlined"
+            color={chip.color}
           />
         ))}
       </Stack>

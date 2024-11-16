@@ -40,6 +40,15 @@ export default function Search({
         column: string;
         filter: string;
         value: string;
+        color:
+          | 'default'
+          | 'primary'
+          | 'secondary'
+          | 'error'
+          | 'info'
+          | 'success'
+          | 'warning'
+          | undefined;
       }[]
     >
   >;
@@ -47,6 +56,15 @@ export default function Search({
     column: string;
     filter: string;
     value: string;
+    color:
+      | 'default'
+      | 'primary'
+      | 'secondary'
+      | 'error'
+      | 'info'
+      | 'success'
+      | 'warning'
+      | undefined;
   }[];
 }) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -75,6 +93,28 @@ export default function Search({
     setSelectedFilter(event.target.value);
   };
 
+  const getRandomColor = () => {
+    const colors = [
+      'default',
+      'primary',
+      'secondary',
+      'error',
+      'info',
+      'success',
+      'warning',
+    ];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex] as
+      | 'default'
+      | 'primary'
+      | 'secondary'
+      | 'error'
+      | 'info'
+      | 'success'
+      | 'warning'
+      | undefined;
+  };
+
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && inputValue.trim()) {
       if (selectedColumn && selectedFilter) {
@@ -82,6 +122,7 @@ export default function Search({
           column: selectedColumn,
           filter: selectedFilter,
           value: inputValue.trim(),
+          color: getRandomColor(),
         };
         setChips((prevChips) => [...prevChips, newChip]);
       } else {
@@ -89,6 +130,7 @@ export default function Search({
           column: 'any',
           filter: 'contains',
           value: inputValue.trim(),
+          color: getRandomColor(),
         };
         setChips((prevChips) => [...prevChips, newChip]);
       }
