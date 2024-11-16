@@ -34,20 +34,14 @@ export default function MainGrid() {
     {
       title: 'Total Tasks',
       value: `${totalTasks}`,
-      interval: 'Last 30 days',
-      trend: 'neutral',
     },
     {
       title: 'Completed Tasks',
       value: `${completedTasks}`,
-      interval: 'Last 30 days',
-      trend: 'up',
     },
     {
       title: 'Pending Tasks',
       value: `${pendingTasks}`,
-      interval: 'Last 30 days',
-      trend: 'down',
     },
   ];
 

@@ -57,6 +57,7 @@ export default function Search({
 
   useEffect(() => {
     if (chips.length > 0) setIsFilterApplied(true);
+    else setIsFilterApplied(false);
   }, [chips]);
   const handleFilterClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);

@@ -10,15 +10,22 @@ import { Stack } from '@mui/material';
 
 function renderStatus(status: 'Low' | 'Medium' | 'High' | 'Critical') {
   const colors: {
-    [index: string]: 'default' | 'success' | 'warning' | 'error';
+    [index: string]: 'default' | 'success' | 'primary' | 'warning' | 'error';
   } = {
     Low: 'default',
     Medium: 'warning',
-    High: 'error',
+    High: 'success',
     Critical: 'error',
   };
 
-  return <Chip label={status} color={colors[status]} size="small" />;
+  return (
+    <Chip
+      label={status}
+      color={colors[status]}
+      size="small"
+      variant="outlined"
+    />
+  );
 }
 
 export function renderAvatar(

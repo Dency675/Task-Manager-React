@@ -81,6 +81,7 @@ export default function ChartUserByCountry({
   taskData: { label: string; value: number; color: string }[];
 }) {
   const totalTasks = taskData.reduce((acc, curr) => acc + curr.value, 0);
+
   return (
     <Card
       variant="outlined"
@@ -105,7 +106,12 @@ export default function ChartUserByCountry({
                 innerRadius: 75,
                 outerRadius: 100,
                 paddingAngle: 0,
-                highlightScope: { faded: 'global', highlighted: 'item' },
+                highlightScope: { fade: 'global', highlight: 'item' },
+                faded: {
+                  innerRadius: 40,
+                  additionalRadius: -30,
+                  color: 'gray',
+                },
               },
             ]}
             height={260}
@@ -149,6 +155,7 @@ export default function ChartUserByCountry({
                 sx={{
                   [`& .${linearProgressClasses.bar}`]: {
                     backgroundColor: task.color,
+                    transition: 'width 1s ease-in-out',
                   },
                 }}
               />

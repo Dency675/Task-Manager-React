@@ -8,20 +8,16 @@ import Typography from '@mui/material/Typography';
 export type StatCardProps = {
   title: string;
   value: string;
-  interval: string;
-  trend: 'up' | 'down' | 'neutral';
 };
 
-export default function StatCard({
-  title,
-  value,
-  interval,
-  trend,
-}: StatCardProps) {
+export default function StatCard({ title, value }: StatCardProps) {
   const theme = useTheme();
 
   return (
-    <Card variant="outlined" sx={{ height: '100%', flexGrow: 1 }}>
+    <Card
+      variant="outlined"
+      sx={{ height: '100%', flexGrow: 1, bgcolor: '#7b7bc42e' }}
+    >
       <CardContent>
         <Typography component="h2" variant="subtitle2" gutterBottom>
           {title}
