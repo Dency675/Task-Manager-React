@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
@@ -11,7 +10,6 @@ export type StatCardProps = {
 };
 
 export default function StatCard({ title, value }: StatCardProps) {
-  const theme = useTheme();
 
   return (
     <Card

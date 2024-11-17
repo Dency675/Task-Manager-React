@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { DataGrid, GridValidRowModel } from '@mui/x-data-grid';
 import { columns } from './gridData';
@@ -18,14 +19,10 @@ import {
 } from '@mui/material';
 
 export default function CustomizedDataGrid({
-  filterText,
-  openFilterPanel,
   onRowsSelected,
   setRows,
   rows,
 }: {
-  filterText: string;
-  openFilterPanel: boolean;
   onRowsSelected: React.Dispatch<React.SetStateAction<number[]>>;
   setRows: React.Dispatch<React.SetStateAction<readonly GridValidRowModel[]>>;
   rows: readonly GridValidRowModel[];
@@ -36,11 +33,11 @@ export default function CustomizedDataGrid({
   const [priority, setPriority] = useState('Low');
   const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
 
-  const filteredRows = rows.filter(
-    (row) =>
-      row.taskTitle.toLowerCase().includes(filterText.toLowerCase()) ||
-      row.status.toLowerCase().includes(filterText.toLowerCase()),
-  );
+  // const filteredRows = rows.filter(
+  //   (row) =>
+  //     row.taskTitle.toLowerCase().includes(filterText.toLowerCase()) ||
+  //     row.status.toLowerCase().includes(filterText.toLowerCase()),
+  // );
 
   const handleDeleteConfirmationOpen = (row: any) => {
     setSelectedRow(row);
@@ -112,7 +109,7 @@ export default function CustomizedDataGrid({
       <DataGrid
         checkboxSelection
         onRowSelectionModelChange={(ids) => onRowsSelected(ids as number[])}
-        rows={filteredRows}
+        rows={rows}
         columns={columns(
           handleEditClick,
           handleDeleteConfirmationOpen,

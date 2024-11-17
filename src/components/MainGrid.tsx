@@ -17,7 +17,6 @@ import { rows as initialRows } from './sampleData';
 import { Chip } from '@mui/material';
 
 export default function MainGrid() {
-  const [filterText, setFilterText] = useState('');
   const [openAddTaskDialog, setOpenAddTaskDialog] = useState(false);
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const [rows, setRows] = useState(initialRows);
@@ -58,7 +57,7 @@ export default function MainGrid() {
     },
   ];
 
-  const handleDeleteChip = (chipToDelete: any) => {
+  const handleDeleteChip = (chipToDelete: unknown) => {
     setChips((prevChips) => prevChips.filter((chip) => chip !== chipToDelete));
   };
 
@@ -217,9 +216,7 @@ export default function MainGrid() {
       <Grid container spacing={2} columns={12}>
         <Grid size={{ xs: 12, lg: 9 }}>
           <CustomizedDataGrid
-            filterText={filterText}
             onRowsSelected={setSelectedRows}
-            openFilterPanel={false}
             setRows={setRows}
             rows={filteredRows}
           />

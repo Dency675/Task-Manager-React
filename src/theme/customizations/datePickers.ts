@@ -9,7 +9,6 @@ import {
 import { menuItemClasses } from '@mui/material/MenuItem';
 import { gray, brand } from '../themePrimitives';
 
-/* eslint-disable import/prefer-default-export */
 export const datePickersCustomizations: PickersProComponents<Theme> &
   PickerComponents<Theme> = {
   MuiPickersPopper: {
