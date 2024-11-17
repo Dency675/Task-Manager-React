@@ -78,7 +78,7 @@ The application will be accessible at `http://localhost:3000` or the port specif
 
 ---
 
-##  🧩 Technologies Used
+## 🧩 Technologies Used
 
 - **React**: For building the user interface.
 - **TypeScript**: For static type checking and better developer experience.

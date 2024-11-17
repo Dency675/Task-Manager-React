@@ -30,16 +30,19 @@ export default function AddTaskDialog({
   const [markComplete, setMarkComplete] = useState(false);
 
   const handleSave = () => {
-    setRows((prevRows) => [
-      ...prevRows,
-      {
-        id: prevRows.length + 1,
-        taskTitle: taskTitle,
-        status: priority,
-        description: description,
-        markComplete: markComplete,
-      },
-    ]);
+    setRows((prevRows) => {
+      const maxId = prevRows.reduce((max, row) => Math.max(max, row.id), 0);
+      return [
+        ...prevRows,
+        {
+          id: maxId + 1,
+          taskTitle: taskTitle,
+          status: priority,
+          description: description,
+          markComplete: markComplete,
+        },
+      ];
+    });
 
     setTaskTitle('');
     setDescription('');

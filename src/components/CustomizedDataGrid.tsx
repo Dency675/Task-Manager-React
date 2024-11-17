@@ -125,6 +125,7 @@ export default function CustomizedDataGrid({
         disableColumnResize
         density="compact"
         disableRowSelectionOnClick
+        disableColumnMenu
       />
 
       <Dialog open={open} onClose={handleCloseDialog}>
