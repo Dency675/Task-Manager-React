@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# Task Manager 📋
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+**Task Manager** is a React application built with TypeScript and Material-UI (MUI) to help manage tasks effectively. The app provides a clean, intuitive interface to add, edit, delete, sort, search, and filter tasks. It also gives a quick overview of task progress and visualizes task priorities through graphs.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
+1. **Add, Edit, and Delete Tasks**:
+   - Create tasks with a title, description, priority, and completion status.
+   - Update task details at any time.
+   - Delete tasks when they are no longer needed.
 
-### `npm start`
+2. **Sort and Search Tasks**:
+   - Sort tasks by title, description, priority or completion status.
+   - Use the search bar to quickly find specific tasks by keywords.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. **Filter Tasks**:
+   - Filter tasks based on title, description, priority (e.g., Low, Medium, High, Critical) or completion status.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. **Task Overview**:
+   - View a summary of total, completed and pending tasks.
 
-### `npm test`
+5. **Graphical Representation**:
+   - Visualize task distribution by priority with an interactive pie chart.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Task Structure
+Each task consists of the following fields:
+- **Title**: Brief name of the task.
+- **Description**: Detailed explanation of the task.
+- **Priority**: Importance level of the task (Low, Medium, High, Critical).
+- **Completion Status**: Indicates if the task is marked as complete.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To set up the project on your local machine:
 
-### `npm run eject`
+### 1. Clone the Repository:
+```bash
+git clone https://github.com/Dency675/Task-Manager-React
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 2. Install Dependencies:
+Navigate to the project directory and install the required packages:
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Start the Application:
+Run the project in development mode:
+```bash
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The application will be accessible at `http://localhost:3000` or the port specified in your development environment.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Technologies Used
+- **React**: For building the user interface.
+- **TypeScript**: For static type checking and better developer experience.
+- **Material-UI (MUI)**: For consistent, responsive UI components.
+- **React Data Grid**: For advanced grid functionalities like sorting and filtering.
+- **React Pie Chart**: For graphical task visualization.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
+1. **Task List View**:
+   - Displays all tasks with options to sort, search, filter, and manage tasks.
+   - ![image](https://github.com/user-attachments/assets/50cac99d-03ae-4672-a998-99c87cf79304)
+
+
+2. **Add/Edit Task Dialog**:
+   - Modal dialog to input task details.
+   - ![image](https://github.com/user-attachments/assets/81b3329d-b845-4653-bab3-8ba7fb13d97e)
+
+
+3. **Graphical Overview**:
+   - Pie chart showing task priority distribution.
+   - ![image](https://github.com/user-attachments/assets/7b62f196-450f-440a-943c-2a6e6d44b203)
+
+
+---
+
+## Contributing
+If you would like to contribute to the project:
+1. Fork the repository.
+2. Create a new branch for your feature.
+3. Submit a pull request.
+
+---
+
+**Happy Task Managing!** 😊
