@@ -6,7 +6,11 @@
 
 ---
 
-## Features
+## 🚀 Live Demo
+
+Check out the deployed application here: [Task Manager App](https://task-manager-react-sigma.vercel.app/)
+
+## 🌟Features
 
 1. **Add, Edit, and Delete Tasks**:
 
@@ -43,7 +47,7 @@ Each task consists of the following fields:
 
 ---
 
-## Installation
+## 🛠️ Installation and Setup
 
 To set up the project on your local machine:
 
@@ -51,6 +55,7 @@ To set up the project on your local machine:
 
 ```bash
 git clone https://github.com/Dency675/Task-Manager-React
+cd Task-Manager-React
 ```
 
 ### 2. Install Dependencies:
@@ -73,7 +78,7 @@ The application will be accessible at `http://localhost:3000` or the port specif
 
 ---
 
-## Technologies Used
+##  🧩 Technologies Used
 
 - **React**: For building the user interface.
 - **TypeScript**: For static type checking and better developer experience.
