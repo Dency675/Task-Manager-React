@@ -10,7 +10,6 @@ export type StatCardProps = {
 };
 
 export default function StatCard({ title, value }: StatCardProps) {
-
   return (
     <Card
       variant="outlined"
